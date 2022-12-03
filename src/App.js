@@ -11,21 +11,31 @@ function App() {
     },
     {
         id: 2,
-        text: 'Online Shopping',
+        text: 'Do the dishes',
         day: 'Feb 5th at 02:30pm',
         reminder: false, 
     },
     {
         id: 3,
-        text: 'Online Shopping',
+        text: 'Send resignation',
         day: 'Feb 5th at 02:30pm',
         reminder: false, 
     }
 ]);
-  return (
+
+const deleteTask = (id) => {
+  setTasks(tasks.filter((task) => task.id !== id));
+}
+
+const toggleReminder = (id) => {
+  setTasks(tasks.map((task) => task.id === id ? {...task, reminder: !task.reminder} : task))
+}
+
+return (
    <div className="container">
     <Header></Header>
-    <Tasks tasks={tasks}></Tasks>
+    
+    {tasks.length > 0 ? (<Tasks tasks={tasks} deleteTask = {deleteTask} onToggle = {toggleReminder}></Tasks>) : "No Tasks To Show"}
    </div>
   );
 }
