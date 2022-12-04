@@ -1,6 +1,7 @@
 import { Header } from "./components/Header";
 import { useState } from "react";
-import Tasks from "./components/Tasks"
+import Tasks from "./components/Tasks";
+import AddTask from "./components/AddTask";
 function App() {
   const [tasks, setTasks] = useState([
     {
@@ -34,7 +35,7 @@ const toggleReminder = (id) => {
 return (
    <div className="container">
     <Header></Header>
-    
+    <AddTask />
     {tasks.length > 0 ? (<Tasks tasks={tasks} deleteTask = {deleteTask} onToggle = {toggleReminder}></Tasks>) : "No Tasks To Show"}
    </div>
   );
