@@ -25,7 +25,7 @@ function App() {
 ]);
 
 const addTask = (task) => {
-  alert('fucked'); 
+  console.log('fucked'); 
 }
 
 const deleteTask = (id) => {
