@@ -25,7 +25,13 @@ function App() {
 ]);
 
 const addTask = (task) => {
-  console.log('fucked'); 
+
+  const id = Math.floor(Math.random() * 10000 + 1 );
+
+  const newTask = { id, ...task }
+  setTasks([...tasks, newTask])
+
+  console.log(tasks)
 }
 
 const deleteTask = (id) => {
