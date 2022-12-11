@@ -3,6 +3,7 @@ import { useState } from "react";
 import Tasks from "./components/Tasks";
 import AddTask from "./components/AddTask";
 function App() {
+  const [showAddTask, setShowAddTask] = useState(true)
   const [tasks, setTasks] = useState([
     {
         id: 1,
@@ -24,14 +25,13 @@ function App() {
     }
 ]);
 
-const addTask = (task) => {
+const addTask = (text, day, reminder) => {
 
   const id = Math.floor(Math.random() * 10000 + 1 );
 
-  const newTask = { id, ...task }
+  const newTask = { id, text, day, reminder}
   setTasks([...tasks, newTask])
 
-  console.log(tasks)
 }
 
 const deleteTask = (id) => {
@@ -44,8 +44,8 @@ const toggleReminder = (id) => {
 
 return (
    <div className="container">
-    <Header></Header>
-    <AddTask onAdd={addTask}/>
+    <Header/>
+    {showAddTask && <AddTask onAdd={addTask}/>}
     {tasks.length > 0 ? (<Tasks tasks={tasks} deleteTask = {deleteTask} onToggle = {toggleReminder}></Tasks>) : "No Tasks To Show"}
    </div>
   );

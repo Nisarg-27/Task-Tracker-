@@ -1,6 +1,6 @@
 import React from 'react'
 const onClick = () => {
-    alert("fucked");
+    
  }
 export const button = ({color, text}) => {
   return (
