@@ -15,9 +15,6 @@ const AddTask = ({onAdd}) => {
     else{
       onAdd(text, day, reminder);
     }
-
-   
-
     setText('')
     setDay('')
     setReminder('')

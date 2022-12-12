@@ -2,6 +2,7 @@ import { Header } from "./components/Header";
 import { useState } from "react";
 import Tasks from "./components/Tasks";
 import AddTask from "./components/AddTask";
+
 function App() {
   const [showAddTask, setShowAddTask] = useState(true)
   const [tasks, setTasks] = useState([
@@ -42,9 +43,19 @@ const toggleReminder = (id) => {
   setTasks(tasks.map((task) => task.id === id ? {...task, reminder: !task.reminder} : task))
 }
 
+const toggleButton =(showAddTask) => {
+  console.log(showAddTask)
+  alert("clicked")
+  if(showAddTask === true){
+    setShowAddTask(false)
+  }else{
+    setShowAddTask(true)
+  }
+}
+
 return (
    <div className="container">
-    <Header/>
+    <Header onAdd={toggleButton}/>
     {showAddTask && <AddTask onAdd={addTask}/>}
     {tasks.length > 0 ? (<Tasks tasks={tasks} deleteTask = {deleteTask} onToggle = {toggleReminder}></Tasks>) : "No Tasks To Show"}
    </div>
